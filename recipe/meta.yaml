@@ -10,7 +10,7 @@ source:
   sha256: eacc6f0f8543583ecd659faf0a3f906ed03826f1d4157b536b4b385fe47c5bb8
 
 build:
-  number: 1
+  number: 2
   skip: true  # [not unix]
 
 requirements:
@@ -59,7 +59,15 @@ outputs:
       - lib/pkgconfig/libnghttp2*  # [unix]
       - bin/nghttp*  # [unix]
     test:
-      commands: nghttp -nv https://nghttp2.org
+      commands:
+        - nghttp -nv https://nghttp2.org
+        - test -f ${PREFIX}/lib/libnghttp2.14${SHLIB_EXT}  # [unix]
+        - test ! -f ${PREFIX}/lib/libnghttp2.a  # [unix]
+  - name: libnghttp2-static
+    script: build_static.sh  # [unix]
+    test:
+      commands:
+        - test -f ${PREFIX}/lib/libnghttp2.a  # [unix]
 
 about:
   home: http://github.com/nghttp2/nghttp2

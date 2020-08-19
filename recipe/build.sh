@@ -6,3 +6,4 @@ cp $BUILD_PREFIX/share/libtool/build-aux/config.* .
 
 make -j${CPU_COUNT} ${VERBOSE_AT}
 make install
+rm ${PREFIX}/lib/libnghttp2.a
