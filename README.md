@@ -96,6 +96,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libnghttp2-green.svg)](https://anaconda.org/conda-forge/libnghttp2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libnghttp2.svg)](https://anaconda.org/conda-forge/libnghttp2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libnghttp2.svg)](https://anaconda.org/conda-forge/libnghttp2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libnghttp2.svg)](https://anaconda.org/conda-forge/libnghttp2) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libnghttp2--static-green.svg)](https://anaconda.org/conda-forge/libnghttp2-static) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libnghttp2-static.svg)](https://anaconda.org/conda-forge/libnghttp2-static) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libnghttp2-static.svg)](https://anaconda.org/conda-forge/libnghttp2-static) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libnghttp2-static.svg)](https://anaconda.org/conda-forge/libnghttp2-static) |
 
 Installing nghttp2
 ==================
@@ -106,10 +107,10 @@ Installing `nghttp2` from the `conda-forge` channel can be achieved by adding `c
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `libnghttp2` can be installed with:
+Once the `conda-forge` channel has been enabled, `libnghttp2, libnghttp2-static` can be installed with:
 
 ```
-conda install libnghttp2
+conda install libnghttp2 libnghttp2-static
 ```
 
 It is possible to list all of the versions of `libnghttp2` available on your platform with:
