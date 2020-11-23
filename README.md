@@ -5,9 +5,13 @@ Home: http://github.com/nghttp2/nghttp2
 
 Package license: MIT
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nghttp2-feedstock/blob/master/LICENSE.txt)
 
 Summary: This is an implementation of Hypertext Transfer Protocol version 2.
+
+Development: https://github.com/nghttp2/nghttp2
+
+Documentation: https://nghttp2.org/documentation/
 
 This is an implementation of the Hypertext Transfer Protocol version 2 in C.
 
