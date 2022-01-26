@@ -79,7 +79,7 @@ outputs:
       host:
         - {{ pin_subpackage('libnghttp2', exact=True) }}
         # we need to add openssl to generate all appropriate versions
-        - openssl
+        - openssl  # [unix]
       run:
         - {{ pin_subpackage('libnghttp2', exact=True) }}
         - libev-static
