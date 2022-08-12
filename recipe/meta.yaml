@@ -23,15 +23,14 @@ requirements:
   host:
     - zlib
     - openssl  # [unix]
+    # Use one libev so that the global pinning gets picked up
+    - libev
     - libev >=4.11
+    # Use one c-ares so that the global pinning gets picked up
+    - c-ares
     - c-ares >=1.7.5
   run:
-    - zlib
-    - openssl  # [unix]
-    - libev >=4.11
-    - c-ares >=1.7.5
     - libstdcxx-ng  # [linux]
-
 
 outputs:
   - name: libnghttp2
@@ -44,13 +43,13 @@ outputs:
       host:
         - zlib
         - openssl  # [unix]
+        # Use one libev so that the global pinning gets picked up
+        - libev
         - libev >=4.11
+        # Use one c-ares so that the global pinning gets picked up
+        - c-ares
         - c-ares >=1.7.5
       run:
-        - zlib
-        - openssl  # [unix]
-        - libev >=4.11
-        - c-ares >=1.7.5
         - libstdcxx-ng  # [linux]
     build:
       run_exports:
