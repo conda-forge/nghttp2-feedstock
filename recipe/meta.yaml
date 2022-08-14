@@ -81,6 +81,9 @@ outputs:
         - {{ pin_subpackage('libnghttp2', exact=True) }}
         # we need to add openssl to generate all appropriate versions
         - openssl  # [unix]
+        # zlib does not have a dedicated static package, rather
+        # this pulls in both static and dynamically linked development
+        # dependencies
         - zlib
       run:
         - {{ pin_subpackage('libnghttp2', exact=True) }}
