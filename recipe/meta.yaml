@@ -26,10 +26,6 @@ requirements:
     - libev >=4.11
     - c-ares >=1.7.5
   run:
-    - zlib
-    - openssl  # [unix]
-    - libev >=4.11
-    - c-ares >=1.7.5
     - libstdcxx-ng  # [linux]
 
 
@@ -47,10 +43,6 @@ outputs:
         - libev >=4.11
         - c-ares >=1.7.5
       run:
-        - zlib
-        - openssl  # [unix]
-        - libev >=4.11
-        - c-ares >=1.7.5
         - libstdcxx-ng  # [linux]
     build:
       run_exports:
@@ -70,7 +62,7 @@ outputs:
   - name: libnghttp2-static
     script: install.sh  # [unix]
     build:
-      skip: true  # [not unix]
+      skip: true  # [not unix
     requirements:
       build:
         - {{ compiler('c') }}
@@ -80,10 +72,11 @@ outputs:
         - {{ pin_subpackage('libnghttp2', exact=True) }}
         # we need to add openssl to generate all appropriate versions
         - openssl  # [unix]
-      run:
-        - {{ pin_subpackage('libnghttp2', exact=True) }}
         - libev-static
         - c-ares-static
+        - zlib
+      run:
+        - {{ pin_subpackage('libnghttp2', exact=True) }}
     test:
       commands:
         - test -f ${PREFIX}/lib/lib{{ name }}.a    # [unix]
