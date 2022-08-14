@@ -23,7 +23,13 @@ requirements:
   host:
     - zlib
     - openssl  # [unix]
+    # Use one dependency without any constraints to help the
+    # libev migrator set the right global pinning
+    - libev
     - libev >=4.11
+    # Use one dependency without any constraints to help the 
+    # c-ares migrator set the right global pinning
+    - c-ares
     - c-ares >=1.7.5
   run:
     - libstdcxx-ng  # [linux]
@@ -40,7 +46,13 @@ outputs:
       host:
         - zlib
         - openssl  # [unix]
+        # Use one dependency without any constraints to help the
+        # libev migrator set the right global pinning
+        - libev
         - libev >=4.11
+        # Use one dependency without any constraints to help the 
+        # c-ares migrator set the right global pinning
+        - c-ares
         - c-ares >=1.7.5
       run:
         - libstdcxx-ng  # [linux]
