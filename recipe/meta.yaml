@@ -74,7 +74,7 @@ outputs:
   - name: libnghttp2-static
     script: install.sh  # [unix]
     build:
-      skip: true  # [not unix
+      skip: true  # [not unix]
     requirements:
       build:
         - {{ compiler('c') }}
