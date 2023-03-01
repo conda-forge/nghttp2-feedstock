@@ -1,11 +1,11 @@
-About nghttp2
-=============
+About nghttp2-feedstock
+=======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nghttp2-feedstock/blob/main/LICENSE.txt)
 
 Home: http://github.com/nghttp2/nghttp2
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nghttp2-feedstock/blob/main/LICENSE.txt)
 
 Summary: This is an implementation of Hypertext Transfer Protocol version 2.
 
@@ -38,73 +38,38 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_openssl1.1.1</td>
+              <td>linux_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7297&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_openssl1.1.1" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_openssl3</td>
+              <td>linux_aarch64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7297&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_openssl3" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_openssl1.1.1</td>
+              <td>linux_ppc64le</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7297&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_openssl1.1.1" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_openssl3</td>
+              <td>osx_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7297&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_openssl3" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_openssl1.1.1</td>
+              <td>osx_arm64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7297&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_openssl1.1.1" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_openssl3</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7297&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_openssl3" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_openssl1.1.1</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7297&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_openssl1.1.1" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_openssl3</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7297&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_openssl3" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_openssl1.1.1</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7297&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_openssl1.1.1" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_openssl3</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7297&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_openssl3" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/nghttp2-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -121,6 +86,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libnghttp2-green.svg)](https://anaconda.org/conda-forge/libnghttp2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libnghttp2.svg)](https://anaconda.org/conda-forge/libnghttp2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libnghttp2.svg)](https://anaconda.org/conda-forge/libnghttp2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libnghttp2.svg)](https://anaconda.org/conda-forge/libnghttp2) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libnghttp2--static-green.svg)](https://anaconda.org/conda-forge/libnghttp2-static) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libnghttp2-static.svg)](https://anaconda.org/conda-forge/libnghttp2-static) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libnghttp2-static.svg)](https://anaconda.org/conda-forge/libnghttp2-static) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libnghttp2-static.svg)](https://anaconda.org/conda-forge/libnghttp2-static) |
 
 Installing nghttp2
 ==================
@@ -132,16 +98,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libnghttp2` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `libnghttp2, libnghttp2-static` can be installed with `conda`:
 
 ```
-conda install libnghttp2
+conda install libnghttp2 libnghttp2-static
 ```
 
 or with `mamba`:
 
 ```
-mamba install libnghttp2
+mamba install libnghttp2 libnghttp2-static
 ```
 
 It is possible to list all of the versions of `libnghttp2` available on your platform with `conda`:
