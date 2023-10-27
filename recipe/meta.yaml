@@ -1,5 +1,5 @@
 {% set name = "nghttp2" %}
-{% set version = "1.55.1" %}
+{% set version = "1.58.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/nghttp2/{{ name }}/releases/download/v{{ version }}/nghttp2-{{ version }}.tar.gz
-  sha256: e12fddb65ae3218b4edc083501519379928eba153e71a1673b185570f08beb96
+  sha256: 9ebdfbfbca164ef72bdf5fd2a94a4e6dfb54ec39d2ef249aeb750a91ae361dfb
 
 build:
   number: 0
