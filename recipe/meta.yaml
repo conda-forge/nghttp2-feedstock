@@ -10,24 +10,25 @@ source:
   sha256: 9ebdfbfbca164ef72bdf5fd2a94a4e6dfb54ec39d2ef249aeb750a91ae361dfb
 
 build:
-  number: 0
-  skip: true  # [not unix]
+  number: 1
 
 requirements:
   build:
     - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - make
+    - cmake       # [win]
+    - ninja       # [win]
+    - make        # [unix]
     - pkg-config  # [unix]
   host:
     - zlib
-    - openssl  # [unix]
+    - openssl
     # Use one dependency without any constraints to help the
     # libev migrator set the right global pinning
-    - libev
-    - libev >=4.11
-    # Use one dependency without any constraints to help the 
+    - libev          # [unix]
+    - libev >=4.11   # [unix]
+    # Use one dependency without any constraints to help the
     # c-ares migrator set the right global pinning
     - c-ares
     - c-ares >=1.7.5
@@ -38,19 +39,23 @@ requirements:
 outputs:
   - name: libnghttp2
     script: install.sh  # [unix]
+    script: install.bat  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
-        - make
+        - cmake       # [win]
+        - ninja       # [win]
+        - make        # [unix]
+        - pkg-config  # [unix]
       host:
         - zlib
-        - openssl  # [unix]
+        - openssl
         # Use one dependency without any constraints to help the
         # libev migrator set the right global pinning
-        - libev
-        - libev >=4.11
-        # Use one dependency without any constraints to help the 
+        - libev          # [unix]
+        - libev >=4.11   # [unix]
+        # Use one dependency without any constraints to help the
         # c-ares migrator set the right global pinning
         - c-ares
         - c-ares >=1.7.5
@@ -59,17 +64,21 @@ outputs:
     build:
       run_exports:
         - {{ pin_subpackage('libnghttp2') }}
-    files:
-      - include/nghttp2/nghttp2*  # [unix]
-      - lib/libnghttp2*  # [unix]
-      - lib/nghttp2*  # [unix]
-      - lib/pkgconfig/libnghttp2*  # [unix]
-      - bin/nghttp*  # [unix]
+    files:                           # [unix]
+      - include/nghttp2/nghttp2*     # [unix]
+      - lib/libnghttp2*              # [unix]
+      - lib/nghttp2*                 # [unix]
+      - lib/pkgconfig/libnghttp2*    # [unix]
+      - bin/nghttp*                  # [unix]
     test:
       commands:
-        - nghttp -nv https://nghttp2.org
+        # The binary command requires libev which we don't have on conda-forge
+        # on windows
+        - nghttp -nv https://nghttp2.org             # [unix]
         - test ! -f ${PREFIX}/lib/lib{{ name }}.a    # [unix]
         - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]
+        - if not exist %PREFIX%\\Library\\bin\\nghttp2.dll exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\lib\\nghttp2.lib exit 1  # [win]
 
   - name: libnghttp2-static
     script: install.sh  # [unix]
