@@ -22,16 +22,16 @@ requirements:
     - make        # [unix]
     - pkg-config  # [unix]
   host:
-    - zlib
-    - openssl
+    - zlib            # [unix]
+    - openssl         # [unix]
     # Use one dependency without any constraints to help the
     # libev migrator set the right global pinning
-    - libev          # [unix]
-    - libev >=4.11   # [unix]
+    - libev           # [unix]
+    - libev >=4.11    # [unix]
     # Use one dependency without any constraints to help the
     # c-ares migrator set the right global pinning
-    - c-ares
-    - c-ares >=1.7.5
+    - c-ares          # [unix]
+    - c-ares >=1.7.5  # [unix]
   run:
     - libstdcxx-ng  # [linux]
 
@@ -49,18 +49,20 @@ outputs:
         - make        # [unix]
         - pkg-config  # [unix]
       host:
-        - zlib
-        - openssl
+        - zlib            # [unix]
+        - openssl         # [unix]
         # Use one dependency without any constraints to help the
         # libev migrator set the right global pinning
-        - libev          # [unix]
-        - libev >=4.11   # [unix]
+        - libev           # [unix]
+        - libev >=4.11    # [unix]
         # Use one dependency without any constraints to help the
         # c-ares migrator set the right global pinning
-        - c-ares
-        - c-ares >=1.7.5
+        - c-ares          # [unix]
+        - c-ares >=1.7.5  # [unix]
       run:
         - libstdcxx-ng  # [linux]
+        # https://github.com/conda-forge/libev-feedstock/pull/14
+        - {{ pin_compatible('libev') }}  # [unix]
     build:
       run_exports:
         - {{ pin_subpackage('libnghttp2') }}
