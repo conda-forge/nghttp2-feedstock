@@ -1,5 +1,5 @@
 {% set name = "nghttp2" %}
-{% set version = "1.58.0" %}
+{% set version = "1.59.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/nghttp2/{{ name }}/releases/download/v{{ version }}/nghttp2-{{ version }}.tar.gz
-  sha256: 9ebdfbfbca164ef72bdf5fd2a94a4e6dfb54ec39d2ef249aeb750a91ae361dfb
+  sha256: 90fd27685120404544e96a60ed40398a3457102840c38e7215dc6dec8684470f
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -66,7 +66,7 @@ outputs:
     build:
       run_exports:
         - {{ pin_subpackage('libnghttp2') }}
-    files:                           # [unix]
+    files:   # [unix]
       - include/nghttp2/nghttp2*     # [unix]
       - lib/libnghttp2*              # [unix]
       - lib/nghttp2*                 # [unix]
