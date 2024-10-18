@@ -1,5 +1,5 @@
 {% set name = "nghttp2" %}
-{% set version = "1.58.0" %}
+{% set version = "1.63.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,16 +7,17 @@ package:
 
 source:
   url: https://github.com/nghttp2/{{ name }}/releases/download/v{{ version }}/nghttp2-{{ version }}.tar.gz
-  sha256: 9ebdfbfbca164ef72bdf5fd2a94a4e6dfb54ec39d2ef249aeb750a91ae361dfb
+  sha256: 9318a2cc00238f5dd6546212109fb833f977661321a2087f03034e25444d3dbb
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
     - libtool  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - cmake       # [win]
     - ninja       # [win]
     - make        # [unix]
@@ -32,8 +33,6 @@ requirements:
     # c-ares migrator set the right global pinning
     - c-ares          # [unix]
     - c-ares >=1.7.5  # [unix]
-  run:
-    - libstdcxx-ng  # [linux]
 
 
 outputs:
@@ -44,6 +43,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
         - cmake       # [win]
         - ninja       # [win]
         - make        # [unix]
@@ -60,7 +60,6 @@ outputs:
         - c-ares          # [unix]
         - c-ares >=1.7.5  # [unix]
       run:
-        - libstdcxx-ng  # [linux]
         # https://github.com/conda-forge/libev-feedstock/pull/14
         - {{ pin_compatible('libev') }}  # [unix]
     build:
@@ -90,6 +89,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
         - make
       host:
         - {{ pin_subpackage('libnghttp2', exact=True) }}
