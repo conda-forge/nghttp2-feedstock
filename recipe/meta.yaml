@@ -1,5 +1,7 @@
 {% set name = "nghttp2" %}
 {% set version = "1.68.1" %}
+{% set install_prefix = "." %}          # [unix]
+{% set install_prefix = "Library" %}    # [win]
 
 package:
   name: {{ name|lower }}
@@ -10,7 +12,7 @@ source:
   sha256: ceb434c1f9dfe2a9d305b6b797786fb9227484dfa88508d14ca1c50263db55d3
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -65,12 +67,15 @@ outputs:
     build:
       run_exports:
         - {{ pin_subpackage('libnghttp2') }}
-    files:   # [unix]
-      - include/nghttp2/nghttp2*     # [unix]
-      - lib/libnghttp2*              # [unix]
-      - lib/nghttp2*                 # [unix]
-      - lib/pkgconfig/libnghttp2*    # [unix]
-      - bin/nghttp*                  # [unix]
+    files:
+      - {{ install_prefix }}/include/nghttp2/nghttp2*
+      - {{ install_prefix }}/lib/libnghttp2*              # [unix]
+      - {{ install_prefix }}/lib/nghttp2*                 # [unix]
+      - {{ install_prefix }}/lib/pkgconfig/libnghttp2*
+      - {{ install_prefix }}/bin/nghttp*                  # [unix]
+      - {{ install_prefix }}/bin/nghttp2.dll              # [win]
+      - {{ install_prefix }}/lib/nghttp2.lib              # [win]
+      - {{ install_prefix }}/lib/cmake/nghttp2/nghttp2*
     test:
       commands:
         # The binary command requires libev which we don't have on conda-forge
@@ -78,8 +83,10 @@ outputs:
         - nghttp -nv https://nghttp2.org             # [unix]
         - test ! -f ${PREFIX}/lib/lib{{ name }}.a    # [unix]
         - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]
-        - if not exist %PREFIX%\\Library\\bin\\nghttp2.dll exit 1  # [win]
-        - if not exist %PREFIX%\\Library\\lib\\nghttp2.lib exit 1  # [win]
+        - if not exist %LIBRARY_BIN%\\nghttp2.dll exit 1            # [win]
+        - if not exist %LIBRARY_LIB%\\nghttp2.lib exit 1            # [win]
+        - if not exist %LIBRARY_INC%\\nghttp2\\nghttp2.h exit 1     # [win]
+        - if not exist %LIBRARY_LIB%\\cmake\\nghttp2\\nghttp2Config.cmake exit 1  # [win]
 
   - name: libnghttp2-static
     script: install.sh  # [unix]
