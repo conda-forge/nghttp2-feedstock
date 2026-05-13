@@ -90,14 +90,15 @@ outputs:
 
   - name: libnghttp2-static
     script: install.sh  # [unix]
-    build:
-      skip: true  # [not unix]
+    script: install.bat  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
-        - make
+        - cmake       # [win]
+        - ninja       # [win]
+        - make        # [unix]
       host:
         - {{ pin_subpackage('libnghttp2', exact=True) }}
         # we need to add openssl to generate all appropriate versions
@@ -105,14 +106,18 @@ outputs:
         # zlib does not have a dedicated static package, rather
         # this pulls in both static and dynamically linked development
         # dependencies
-        - zlib
+        - zlib     # [unix]
       run:
         - {{ pin_subpackage('libnghttp2', exact=True) }}
-        - libev-static
-        - c-ares-static
+        - libev-static    # [unix]
+        - c-ares-static   # [unix]
+    files:
+      - {{ install_prefix }}/lib/lib{{ name }}.a    # [unix]
+      - {{ install_prefix }}/lib/nghttp2_static.lib # [win]
     test:
       commands:
         - test -f ${PREFIX}/lib/lib{{ name }}.a    # [unix]
+        - if not exist %LIBRARY_LIB%\\nghttp2_static.lib exit 1  # [win]
 
 about:
   home: http://github.com/nghttp2/nghttp2
