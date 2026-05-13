@@ -75,7 +75,7 @@ outputs:
       - {{ install_prefix }}/bin/nghttp*                  # [unix]
       - {{ install_prefix }}/bin/nghttp2.dll              # [win]
       - {{ install_prefix }}/lib/nghttp2.lib              # [win]
-      - {{ install_prefix }}/lib/cmake/nghttp2/nghttp2*
+      - {{ install_prefix }}/lib/cmake/nghttp2/nghttp2*   # [win]
     test:
       commands:
         # The binary command requires libev which we don't have on conda-forge
