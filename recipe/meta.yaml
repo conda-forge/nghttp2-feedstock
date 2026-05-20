@@ -112,8 +112,8 @@ outputs:
         - libev-static    # [unix]
         - c-ares-static   # [unix]
     files:
-      - {{ install_prefix }}/lib/lib{{ name }}.a    # [unix]
-      - {{ install_prefix }}/lib/nghttp2_static.lib # [win]
+      - {{ install_prefix }}/lib/lib{{ name }}.a     # [unix]
+      - {{ install_prefix }}/lib/nghttp2_static.lib  # [win]
     test:
       commands:
         - test -f ${PREFIX}/lib/lib{{ name }}.a    # [unix]
