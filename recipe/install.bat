@@ -7,7 +7,8 @@ if "%PKG_NAME%" == "libnghttp2-static" (
         -DENABLE_DOC=OFF ^
         -DENABLE_LIB_ONLY=ON ^
         -DBUILD_SHARED_LIBS=OFF ^
-        -DBUILD_STATIC_LIBS=ON
+        -DBUILD_STATIC_LIBS=ON ^
+        -DSTATIC_LIB_SUFFIX=_static
     if %ERRORLEVEL% neq 0 (
         if exist CMakeFiles\CMakeError.log type CMakeFiles\CMakeError.log
         exit 1
