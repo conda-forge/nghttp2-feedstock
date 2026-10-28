@@ -1,9 +1,9 @@
-About nghttp2-feedstock
-=======================
+About libnghttp2-feedstock
+==========================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/nghttp2-feedstock/blob/main/LICENSE.txt)
 
-Home: http://github.com/nghttp2/nghttp2
+Home: https://github.com/nghttp2/nghttp2
 
 Package license: MIT
 
@@ -18,7 +18,6 @@ This is an implementation of the Hypertext Transfer Protocol version 2 in C.
 The framing layer of HTTP/2 is implemented as a reusable C library. On top
 of that, we have implemented an HTTP/2 client, server and proxy. We have
 also developed load test and benchmarking tools for HTTP/2.
-
 
 Current build status
 ====================
@@ -74,10 +73,10 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libnghttp2-green.svg)](https://anaconda.org/conda-forge/libnghttp2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libnghttp2.svg)](https://anaconda.org/conda-forge/libnghttp2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libnghttp2.svg)](https://anaconda.org/conda-forge/libnghttp2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libnghttp2.svg)](https://anaconda.org/conda-forge/libnghttp2) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libnghttp2--static-green.svg)](https://anaconda.org/conda-forge/libnghttp2-static) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libnghttp2-static.svg)](https://anaconda.org/conda-forge/libnghttp2-static) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libnghttp2-static.svg)](https://anaconda.org/conda-forge/libnghttp2-static) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libnghttp2-static.svg)](https://anaconda.org/conda-forge/libnghttp2-static) |
 
-Installing nghttp2
-==================
+Installing libnghttp2
+=====================
 
-Installing `nghttp2` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `libnghttp2` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
@@ -207,17 +206,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating nghttp2-feedstock
-==========================
+Updating libnghttp2-feedstock
+=============================
 
-If you would like to improve the nghttp2 recipe or build a new
+If you would like to improve the libnghttp2 recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/nghttp2-feedstock are
+Note that all branches in the conda-forge/libnghttp2-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.
