@@ -1,0 +1,145 @@
+schema_version: 1
+
+context:
+  version: "1.70.0"
+
+recipe:
+  name: nghttp2
+  version: ${{ version }}
+
+source:
+  url: https://github.com/nghttp2/nghttp2/releases/download/v${{ version }}/nghttp2-${{ version }}.tar.gz
+  sha256: aa317e2cf9dca6afa0aed68f8fad6ff303ec6982e25a78c75c0b65e2b9b3ded5
+
+build:
+  number: 0
+
+outputs:
+  - staging:
+      name: nghttp2-build
+    build:
+      script:
+        file: ${{ "build.bat" if win else "build.sh" }}
+    requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+        - ${{ stdlib('c') }}
+        - if: win
+          then:
+            - cmake
+            - ninja
+          else:
+            - libtool
+            - make
+            - pkg-config
+      host:
+        - if: unix
+          then:
+            - zlib
+            - openssl
+            # Unconstrained entries let migrators apply global pins.
+            - libev
+            - libev >=4.11
+            - c-ares
+            - c-ares >=1.7.5
+
+  - package:
+      name: libnghttp2
+    inherit: nghttp2-build
+    build:
+      script:
+        file: ${{ "install.bat" if win else "install.sh" }}
+      files:
+        - if: unix
+          then:
+            - include/nghttp2/nghttp2*
+            - lib/libnghttp2*
+            - lib/nghttp2*
+            - lib/pkgconfig/libnghttp2*
+            - bin/nghttp*
+          else:
+            - Library/**
+    requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+        - ${{ stdlib('c') }}
+        - if: win
+          then:
+            - cmake
+            - ninja
+          else:
+            - make
+            - pkg-config
+      host:
+        - if: unix
+          then:
+            - zlib
+            - openssl
+            - libev
+            - libev >=4.11
+            - c-ares
+            - c-ares >=1.7.5
+      run:
+        - if: unix
+          then: ${{ pin_compatible('libev') }}
+      run_exports:
+        - ${{ pin_subpackage('libnghttp2') }}
+    tests:
+      - script:
+          - if: unix
+            then:
+              - nghttp -nv https://nghttp2.org
+              - test ! -f ${PREFIX}/lib/libnghttp2.a
+          - if: linux
+            then: test -f ${PREFIX}/lib/libnghttp2.so
+          - if: osx
+            then: test -f ${PREFIX}/lib/libnghttp2.dylib
+          - if: win
+            then:
+              - if not exist %PREFIX%\Library\bin\nghttp2.dll exit 1
+              - if not exist %PREFIX%\Library\lib\nghttp2.lib exit 1
+
+  - package:
+      name: libnghttp2-static
+    inherit: nghttp2-build
+    build:
+      skip: win
+      script: install.sh
+    requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+        - ${{ stdlib('c') }}
+        - make
+      host:
+        - ${{ pin_subpackage('libnghttp2', exact=True) }}
+        - openssl
+        - zlib
+      run:
+        - ${{ pin_subpackage('libnghttp2', exact=True) }}
+        - libev-static
+        - c-ares-static
+    tests:
+      - script: test -f ${PREFIX}/lib/libnghttp2.a
+
+about:
+  homepage: https://github.com/nghttp2/nghttp2
+  license: MIT
+  license_file: COPYING
+  summary: This is an implementation of Hypertext Transfer Protocol version 2.
+  description: |
+    This is an implementation of the Hypertext Transfer Protocol version 2 in C.
+
+    The framing layer of HTTP/2 is implemented as a reusable C library. On top
+    of that, we have implemented an HTTP/2 client, server and proxy. We have
+    also developed load test and benchmarking tools for HTTP/2.
+  documentation: https://nghttp2.org/documentation/
+  repository: https://github.com/nghttp2/nghttp2
+
+extra:
+  recipe-maintainers:
+    - cpaulik
+    - mariusvniekerk
+    - wolfv
