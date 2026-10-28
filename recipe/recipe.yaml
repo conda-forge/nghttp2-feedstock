@@ -107,8 +107,6 @@ outputs:
     build:
       skip: win
       script: install.sh
-      files:
-        - lib/libnghttp2.a
     requirements:
       build:
         - ${{ compiler('c') }}
